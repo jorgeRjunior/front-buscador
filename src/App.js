@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Formulario from './formulario.js';
+import Tabela from './tabela.js';  
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    // UseState
+    const [btnCadastrar, setBtnCadastrar] = useState(true);
+    const [empresas, setEmpresas] = useState([]);
+
+    // UseEffect - Faz a requesição com o backend
+    useEffect(()=>{
+        fetch("http://localhost:8080/api/empresa/busca?nome=Construtora")
+        .then(retorno => retorno.json())
+        .then(retorno_convertido => setEmpresas(retorno_convertido));
+    },[]);
+
+    //Retorno
+    return (
+    <div>
+      <Formulario botao={btnCadastrar}></Formulario>
+      <Tabela vetor={empresas}></Tabela>
     </div>
   );
 }
