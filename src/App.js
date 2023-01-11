@@ -1,7 +1,8 @@
+import axios, { Axios } from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
-import Formulario from './formulario.js';
-import Tabela from './tabela.js';  
+import Formulario from './formulario';
+import Tabela from './tabela';  
 
 function App() {
     // UseState

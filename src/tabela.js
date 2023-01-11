@@ -1,4 +1,4 @@
-function Tabela(vetor){
+function Tabela({vetor}){
     return(
        <table className="table">
         <thead>
@@ -12,7 +12,7 @@ function Tabela(vetor){
             </tr>
         </thead>
         <tbody>
-          {
+           {
             vetor.map((obj, indice) => (
                 <tr key={indice}>
                     <td>{obj.id}</td>
@@ -23,7 +23,7 @@ function Tabela(vetor){
                     <td><button className="btn btn-success">SELECIONAR</button></td>
                 </tr>
             ))
-          }
+          } 
         </tbody>
        </table>
     )
