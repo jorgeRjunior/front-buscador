@@ -1,4 +1,4 @@
-import axios, { Axios } from 'axios';
+import React from 'react'
 import { useEffect, useState } from 'react';
 import './App.css';
 import Formulario from './formulario';
@@ -10,11 +10,14 @@ function App() {
     const [empresas, setEmpresas] = useState([]);
 
     // UseEffect - Faz a requesição com o backend
-    useEffect(()=>{
-        fetch("http://localhost:8080/api/empresa/busca?nome=Construtora")
-        .then(retorno => retorno.json())
-        .then(retorno_convertido => setEmpresas(retorno_convertido));
-    },[]);
+    useEffect(() => {
+      async function fetchData() {
+        const response = await fetch("http://localhost:8080/api/empresa/busca?nome=Construtora");
+        const data = await response.json();
+        setEmpresas(data);
+      }
+      fetchData();
+    }, []);
 
     //Retorno
     return (

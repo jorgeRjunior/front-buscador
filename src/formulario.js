@@ -1,3 +1,5 @@
+import React from 'react'
+
 function Formulario({botao}){
     return(
         <form>
